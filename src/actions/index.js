@@ -1,5 +1,5 @@
 import axios from 'axios'
-import ClientJS from 'clientjs';
+import { getDeviceIdentity, deviceHash } from '../utilities';
 
 const URL = "http://localhost/zsz2/";
 
@@ -7,17 +7,13 @@ const URL = "http://localhost/zsz2/";
 export const logInUser = (login, password) => {
     const FULL_URL = URL+`login.php`;
     const createForm = new FormData();
-    
-
-    const fn = new ClientJS(); 
-    const os = fn.getOS() + ' ' +fn.getOSVersion();
-    const browser = fn.getBrowser() + ' ' +fn.getBrowserVersion();
+    const device = getDeviceIdentity();
 
     createForm.set("login", login);
     createForm.set("password", password);
-    createForm.set("fingerprint", fn.getFingerprint());
-    createForm.set("osname", os);
-    createForm.set("browsername", browser);
+    createForm.set("fingerprint", deviceHash());
+    createForm.set("osname", device.osname);
+    createForm.set("browsername", device.browsername);
 
     
     return dispatch => {

@@ -5,13 +5,14 @@ import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import allReducers from './reducers';
-import { initialState } from './utilities';
+import { initialState, deviceHash } from './utilities';
 
 import App from './App';
 
 
 
 export const store = createStore(allReducers, initialState, applyMiddleware(thunk));
+deviceHash();
 
 
 
