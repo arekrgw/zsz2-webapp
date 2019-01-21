@@ -3,7 +3,8 @@ import Button from '@material-ui/core/Button'
 import Input from '@material-ui/core/TextField';
 import { Link } from 'react-router-dom';
 import './Login.style.css';
-import history from "../history"
+import history from "../history";
+import InputStyled from '../components/LoginRegisterInput'
 
 import { connect } from 'react-redux';
 import { registerUser } from '../actions'
@@ -86,7 +87,7 @@ class Login extends Component {
             <div className="container-login">
                 <form className="login-form">
                     <h1>Załóż konto na szkolnej platformie</h1>
-
+                    <InputStyled onChange={(e) => this.handleInput(e)} name="login" value={this.state.login} type="text" label="Login"/>
                     <Input onChange={(e) => this.handleInput(e)} name="login" value={this.state.login} type="text" label="Login" fullWidth={true} style={this.loginInputStyle} />
 
                     <Input onChange={(e) => this.handleInput(e)} name="email" value={this.state.email} type="text" label="E-mail" fullWidth={true} style={this.loginInputStyle} />
