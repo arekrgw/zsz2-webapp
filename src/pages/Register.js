@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import Button from '@material-ui/core/Button'
-import Input from '@material-ui/core/TextField';
 import { Link } from 'react-router-dom';
 import './Login.style.css';
 import history from "../history";
@@ -78,31 +77,19 @@ class Login extends Component {
             return this.props.messages.success.register ? <p className="success">{this.props.messages.success.register}</p> : ''
         }
     }
-    loginInputStyle = {
-        marginTop: 20
-    }
-
     render() {
         return (
             <div className="container-login">
                 <form className="login-form">
                     <h1>Załóż konto na szkolnej platformie</h1>
                     <InputStyled onChange={(e) => this.handleInput(e)} name="login" value={this.state.login} type="text" label="Login"/>
-                    <Input onChange={(e) => this.handleInput(e)} name="login" value={this.state.login} type="text" label="Login" fullWidth={true} style={this.loginInputStyle} />
-
-                    <Input onChange={(e) => this.handleInput(e)} name="email" value={this.state.email} type="text" label="E-mail" fullWidth={true} style={this.loginInputStyle} />
-
-                    <Input onChange={(e) => this.handleInput(e)} name="imie" value={this.state.imie} type="text" label="Imię" fullWidth={true} style={this.loginInputStyle} />
-                    
-                    <Input onChange={(e) => this.handleInput(e)} name="nazwisko" value={this.state.nazwisko} type="text" label="Nazwisko" fullWidth={true} style={this.loginInputStyle} />
-
-                    <Input onChange={(e) => this.handleInput(e)} name="klasa" value={this.state.klasa} type="text" label="Lata dołączenia do szkoły (np. 2015/2016)" fullWidth={true} style={this.loginInputStyle} />
-
-                    <Input onChange={(e) => this.handleInput(e)} name="password" value={this.state.password} type="password" label="Hasło" fullWidth={true} style={this.loginInputStyle} />
-
-                    <Input onChange={(e) => this.handleInput(e)} name="passwordS" value={this.state.Spassword} type="password" label="Powtórz Hasło" fullWidth={true} style={this.loginInputStyle} />
-
-                    <Input onChange={(e) => this.handleInput(e)} name="code" value={this.state.code} type="text" label="Kod Rejestracyjny Szkoły" fullWidth={true} style={this.loginInputStyle} />
+                    <InputStyled onChange={(e) => this.handleInput(e)} name="email" value={this.state.email} type="text" label="E-mail"/>
+                    <InputStyled onChange={(e) => this.handleInput(e)} name="imie" value={this.state.imie} type="text" label="Imię"/>
+                    <InputStyled onChange={(e) => this.handleInput(e)} name="nazwisko" value={this.state.nazwisko} type="text" label="Nazwisko"/>
+                    <InputStyled onChange={(e) => this.handleInput(e)} name="klasa" value={this.state.klasa} type="text" label="Lata dołączenia do szkoły (np. 2015/2016)"/>
+                    <InputStyled onChange={(e) => this.handleInput(e)} name="password" value={this.state.password} type="password" label="Hasło"/>
+                    <InputStyled onChange={(e) => this.handleInput(e)} name="passwordS" value={this.state.Spassword} type="password" label="Powtórz hasło"/>
+                    <InputStyled onChange={(e) => this.handleInput(e)} name="code" value={this.state.code} type="text" label="Kod rejestracyjny szkoły"/>
 
                     <Button onClick={this.procceedRegister} size="large" variant="contained" color="primary" fullWidth={true} style=
                     {this.loginInputStyle}>Zarejstruj się</Button>

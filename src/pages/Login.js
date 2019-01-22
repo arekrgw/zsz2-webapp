@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Button from '@material-ui/core/Button'
-import Input from '@material-ui/core/TextField';
+import InputStyled from '../components/LoginRegisterInput'
 import { Link } from 'react-router-dom';
 import './Login.style.css';
 import history from "../history"
@@ -48,17 +48,13 @@ class Login extends Component {
             return this.props.messages.errors.login ? <p className="errors">{this.props.messages.errors.login}</p> : ''
         }
     }
-    loginInputStyle = {
-        marginTop: 20
-    }
-
     render() {
         return (
             <div className="container-login">
                 <form className="login-form">
                     <h1>Zaloguj się do platformy</h1>
-                    <Input onChange={(e) => this.handleInput(e)} name="login" value={this.state.login} type="text" label="Login" fullWidth={true} style={this.loginInputStyle} />
-                    <Input onChange={(e) => this.handleInput(e)} name="password" value={this.state.password} type="password" label="Hasło" fullWidth={true} style={this.loginInputStyle} />
+                    <InputStyled onChange={(e) => this.handleInput(e)} name="login" value={this.state.login} type="text" label="Login" />
+                    <InputStyled onChange={(e) => this.handleInput(e)} name="password" value={this.state.password} type="password" label="Hasło"/>
                     <Button onClick={this.procceedLogin} size="large" variant="contained" color="primary" fullWidth={true} style=
                     {this.loginInputStyle}>Zaloguj się</Button>
                 </form>

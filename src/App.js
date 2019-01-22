@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import {Router, Route, Switch, Redirect} from 'react-router-dom';
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import Login from './pages/Login';
 import Home from './pages/Home';
 
 import history from './history';
 import { isSignedInByCookies } from './utilities';
+import theme from './theme.style';
 
 import Register from './pages/Register'
 
@@ -47,16 +48,18 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
 class App extends Component {
   render() {
     return (
-      <>
-      <GlobalStyle />
-      <Router history={history}>
-        <Switch>
-          <Route exact path="/register" component={Register} />
-          <Route exact path="/login" component={Login} />
-          <PrivateRoute path="/" component={Home} />
-        </Switch>
-      </Router>
-      </>
+      <ThemeProvider theme={theme}>
+        <>
+          <GlobalStyle />
+          <Router history={history}>
+            <Switch>
+              <Route exact path="/register" component={Register} />
+              <Route exact path="/login" component={Login} />
+              <PrivateRoute path="/" component={Home} />
+            </Switch>
+          </Router>
+        </>
+      </ThemeProvider>
     );
   }
 }
