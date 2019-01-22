@@ -10,7 +10,7 @@ const DivStyled = styled.div`
 
     &:hover::after {
         height: 2px;
-        background: #333;
+        background: ${({theme}) => theme.colors.almostblack};
     }
 
     &::after {
@@ -22,13 +22,13 @@ const DivStyled = styled.div`
       bottom: 0;
       left: 0;
       transition: all .1s ease;
-      ${({isFocused}) => isFocused && `
-        background: #303f9f !important;
+      ${({isFocused, theme}) => isFocused && `
+        background: ${theme.colors.blue} !important;
         height: 2px;
       `}
-      ${({value}) => value && `
+      ${({value, theme}) => value && `
         height: 2px;
-        background: #303f9f;
+        background: ${theme.colors.blue};
       `}
     }
 `;
@@ -61,7 +61,7 @@ const LabelStyled = styled.label`
       bottom: 3.1em;
       font-size: 0.8em;
     `}
-    ${({isFocused}) => isFocused && `color: #303f9f`}
+    ${({isFocused, theme}) => isFocused && `color: ${theme.colors.blue}`}
 
     ${InputStyled}:focus ~ &{
       bottom: 3.1em;

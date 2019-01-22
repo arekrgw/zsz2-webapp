@@ -1,4 +1,4 @@
-import history from '../history';
+import history from '../utils/history';
 
 export default (state = null, action) => {
 

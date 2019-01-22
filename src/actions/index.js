@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { getDeviceIdentity, deviceHash } from '../utilities';
+import { getDeviceIdentity, deviceHash } from '../utils/utilities';
 
 const URL = "http://localhost/zsz2/";
 

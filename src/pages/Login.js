@@ -3,13 +3,14 @@ import Button from '@material-ui/core/Button'
 import InputStyled from '../components/LoginRegisterInput'
 import { Link } from 'react-router-dom';
 import './Login.style.css';
-import history from "../history"
+import history from "../utils/history";
 
+import Layout from '../layout/Layout'
 
 import { connect } from 'react-redux';
 import { logInUser } from '../actions'
 import { bindActionCreators } from 'redux'
-import { isSignedInByCookies } from '../utilities'
+import { isSignedInByCookies } from '../utils/utilities'
 
 class Login extends Component {
     state = {
@@ -50,6 +51,7 @@ class Login extends Component {
     }
     render() {
         return (
+            <Layout>
             <div className="container-login">
                 <form className="login-form">
                     <h1>Zaloguj się do platformy</h1>
@@ -61,6 +63,7 @@ class Login extends Component {
                 { this.printErrors() }
                 <Link to="/register"><h3 className="no-account">Nie posiadasz jeszcze konta? Załóż je!</h3></Link>
             </div>
+            </Layout>
         )
     }
 }

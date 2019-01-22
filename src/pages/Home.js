@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { isSignedInByCookies } from '../utilities';
-import history from '../history';
+import { isSignedInByCookies } from '../utils/utilities';
+import history from '../utils/history';
 import { Route } from 'react-router-dom';
 
 import Radio from './Radio';

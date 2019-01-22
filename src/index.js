@@ -5,7 +5,7 @@ import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import allReducers from './reducers';
-import { initialState, deviceHash } from './utilities';
+import { initialState, deviceHash } from './utils/utilities';
 
 import App from './App';
 

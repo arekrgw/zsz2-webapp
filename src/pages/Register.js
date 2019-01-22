@@ -2,13 +2,14 @@ import React, { Component } from 'react'
 import Button from '@material-ui/core/Button'
 import { Link } from 'react-router-dom';
 import './Login.style.css';
-import history from "../history";
+import history from "../utils/history";
 import InputStyled from '../components/LoginRegisterInput'
 
 import { connect } from 'react-redux';
 import { registerUser } from '../actions'
 import { bindActionCreators } from 'redux'
-import { isSignedInByCookies } from '../utilities'
+import { isSignedInByCookies } from '../utils/utilities'
+import Layout from '../layout/Layout';
 
 class Login extends Component {
     state = {
@@ -79,6 +80,7 @@ class Login extends Component {
     }
     render() {
         return (
+            <Layout>
             <div className="container-login">
                 <form className="login-form">
                     <h1>Załóż konto na szkolnej platformie</h1>
@@ -86,7 +88,7 @@ class Login extends Component {
                     <InputStyled onChange={(e) => this.handleInput(e)} name="email" value={this.state.email} type="text" label="E-mail"/>
                     <InputStyled onChange={(e) => this.handleInput(e)} name="imie" value={this.state.imie} type="text" label="Imię"/>
                     <InputStyled onChange={(e) => this.handleInput(e)} name="nazwisko" value={this.state.nazwisko} type="text" label="Nazwisko"/>
-                    <InputStyled onChange={(e) => this.handleInput(e)} name="klasa" value={this.state.klasa} type="text" label="Lata dołączenia do szkoły (np. 2015/2016)"/>
+                    <InputStyled onChange={(e) => this.handleInput(e)} name="klasa" value={this.state.klasa} type="text" label="Lata dołączenia do szkoły"/>
                     <InputStyled onChange={(e) => this.handleInput(e)} name="password" value={this.state.password} type="password" label="Hasło"/>
                     <InputStyled onChange={(e) => this.handleInput(e)} name="passwordS" value={this.state.Spassword} type="password" label="Powtórz hasło"/>
                     <InputStyled onChange={(e) => this.handleInput(e)} name="code" value={this.state.code} type="text" label="Kod rejestracyjny szkoły"/>
@@ -98,6 +100,7 @@ class Login extends Component {
                 { this.printSuccess() }
                 <Link to="/login"><h3 className="no-account">Posiadasz już konto? Zaloguj się!</h3></Link>
             </div>
+            </Layout>
         )
     }
 }

@@ -1,5 +1,5 @@
 import Cookie from 'js-cookie';
-import history from '../history';
+import history from '../utils/history';
 
 
 export default (state = null, action) => {
