@@ -22,6 +22,36 @@ export default (state = null, action) => {
                     register: CLEAR_REGISTER_ERRORS
                 }
             }
+        case "CLEAR_REGISTER_MESSAGES" :
+            let CLEAR_REGISTER_ERRORS_ALL = state.errors.register && null; 
+            let CLEAR_REGISTER_SUCCESS_ALL = state.errors.register && null;
+            return state = {
+                ...state,
+                errors: {
+                    ...state.errors,
+                    register: CLEAR_REGISTER_ERRORS_ALL
+                },
+                success: {
+                    ...state.success,
+                    register: CLEAR_REGISTER_SUCCESS_ALL
+                }
+            }
+            
+        case "CLEAR_LOGIN_MESSAGES" :
+            let CLEAR_LOGIN_ERRORS_ALL = state.errors.login && null; 
+            let CLEAR_LOGIN_SUCCESS_ALL = state.errors.login && null;
+            return state = {
+                ...state,
+                errors: {
+                    ...state.errors,
+                    login: CLEAR_LOGIN_ERRORS_ALL
+                },
+                success: {
+                    ...state.success,
+                    login: CLEAR_LOGIN_SUCCESS_ALL
+                }
+            } 
+            
         //MESSAGES
         //ERRORS
         //LOGIN

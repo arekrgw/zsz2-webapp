@@ -8,10 +8,12 @@ import history from "../utils/history";
 import Layout from '../layout/Layout'
 import Wrapper from '../components/LoginRegisterWrapper';
 import StyledForm from '../components/StyledForm';
-import StyledH3 from '../components/StyledH3'
+import StyledH3 from '../components/StyledH3';
+import StyledH1 from '../components/StyledH1'
 
 import { connect } from 'react-redux';
-import { logInUser } from '../actions'
+import { logInUser } from '../actions/logingActions'
+import { clearLoginMessages } from '../actions/messagesActions'
 import { bindActionCreators } from 'redux'
 import { isSignedInByCookies } from '../utils/utilities'
 
@@ -29,6 +31,8 @@ class Login extends Component {
     }
     componentWillUnmount(){
         document.removeEventListener('keydown', this.checkKey);
+        //Clear messages
+        this.props.clearLoginMessages();
     }
     handleInput = (e) => {
         switch(e.target.name){
@@ -62,7 +66,7 @@ class Login extends Component {
             <Layout backgroundColor={this.state.bgStyle}>
             <Wrapper>
                 <StyledForm setWidth="100%">
-                    <h1>Zaloguj się do platformy</h1>
+                    <StyledH1 align="center" fontSize="35px" margin="30px 0 50px 0" shadow>Zaloguj się do platformy</StyledH1>
                     <InputStyled onChange={(e) => this.handleInput(e)} name="login" value={this.state.login} type="text" label="Login" />
                     <InputStyled onChange={(e) => this.handleInput(e)} name="password" value={this.state.password} type="password" label="Hasło"/>
                     <Button onClick={this.procceedLogin} size="large" variant="contained" color="primary" fullWidth={true} style=
@@ -86,7 +90,8 @@ function mapStateToProps(state){
   //laczenie actions
   function matchDispatchToProps(dispatch){
     return bindActionCreators({
-      logInUser
+      logInUser,
+      clearLoginMessages
     },
       dispatch
     )

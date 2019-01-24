@@ -8,9 +8,11 @@ import InputStyled from '../components/LoginRegisterInput'
 import Wrapper from '../components/LoginRegisterWrapper';
 import StyledForm from '../components/StyledForm';
 import StyledH3 from '../components/StyledH3'
+import StyledH1 from '../components/StyledH1'
 
 import { connect } from 'react-redux';
-import { registerUser } from '../actions'
+import { registerUser } from '../actions/logingActions'
+import { clearRegisterMessages } from '../actions/messagesActions'
 import { bindActionCreators } from 'redux'
 import { isSignedInByCookies } from '../utils/utilities'
 import Layout from '../layout/Layout';
@@ -36,6 +38,7 @@ class Login extends Component {
     }
     componentWillUnmount(){
         document.removeEventListener('keydown', this.checkKey);
+        this.props.clearRegisterMessages();
     }
     handleInput = (e) => {
         switch(e.target.name){
@@ -92,7 +95,7 @@ class Login extends Component {
             <Layout backgroundColor={this.state.bgStyle}>
             <Wrapper>
                 <StyledForm setWidth="100%">
-                    <h1>Załóż konto na szkolnej platformie</h1>
+                    <StyledH1 align="center" fontSize="35px" margin="30px 0 50px 0" shadow>Załóż konto na szkolnej platformie</StyledH1>
                     <InputStyled onChange={(e) => this.handleInput(e)} name="login" value={this.state.login} type="text" label="Login"/>
                     <InputStyled onChange={(e) => this.handleInput(e)} name="email" value={this.state.email} type="text" label="E-mail"/>
                     <InputStyled onChange={(e) => this.handleInput(e)} name="imie" value={this.state.imie} type="text" label="Imię"/>
@@ -124,7 +127,8 @@ function mapStateToProps(state){
   //laczenie actions
   function matchDispatchToProps(dispatch){
     return bindActionCreators({
-      registerUser
+      registerUser,
+      clearRegisterMessages
     },
       dispatch
     )

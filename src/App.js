@@ -9,7 +9,6 @@ import { isSignedInByCookies } from './utils/utilities';
 
 import Register from './pages/Register'
 
-import './App.style.css';
 
 
 const PrivateRoute = ({ component: Component, ...rest }) => (

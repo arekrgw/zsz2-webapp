@@ -28,7 +28,6 @@ const StyledWrapper = styled.div`
     padding: 20px;
     transition: all .2s ease
     ${({backgroundColor, theme}) => {
-      console.log(backgroundColor);
       switch(backgroundColor){
         case "normal":
           return theme.backgrounds.normal
