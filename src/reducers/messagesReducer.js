@@ -5,7 +5,7 @@ export default (state = null, action) => {
     switch(action.type){
         // CLEARING MESSAGES
         case "CLEAR_LOGIN_ERRORS":
-            let CLEAR_LOGIN_ERRORS = state.errors.login && null; 
+            let CLEAR_LOGIN_ERRORS = state.errors.login && null ; 
             return state = {
                 ...state,
                 errors: {

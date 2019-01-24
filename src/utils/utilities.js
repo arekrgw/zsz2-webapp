@@ -45,7 +45,7 @@ export const deviceHash = () => {
 
 export const initialState = {
     messages: {
-        errors: null,
-        success: null
+        errors: {},
+        success: {}
     }
 }

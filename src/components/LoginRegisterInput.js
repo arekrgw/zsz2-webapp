@@ -30,6 +30,7 @@ const DivStyled = styled.div`
         height: 2px;
         background: ${theme.colors.blue};
       `}
+      
     }
 `;
 

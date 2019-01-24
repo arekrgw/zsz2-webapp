@@ -20,23 +20,36 @@ const GlobalStyle = createGlobalStyle`
       color: inherit;
     }
 
-    body {
-      background: linear-gradient(to right, rgba(0,0,0,0), rgb(27, 0, 145)), linear-gradient(to right, rgba(255,0,100,.3), rgba(255,100,127,.2)), linear-gradient(to top right, rgb(0, 255, 234), rgba(81, 5, 182, 0)), radial-gradient(closest-corner at 20% 80%, yellow, red);
-      background-attachment: fixed;
-    }
+
 `;  
 
 const StyledWrapper = styled.div`
     width: 100%;
+    padding: 20px;
+    transition: all .2s ease
+    ${({backgroundColor, theme}) => {
+      console.log(backgroundColor);
+      switch(backgroundColor){
+        case "normal":
+          return theme.backgrounds.normal
+        case "success":
+          return theme.backgrounds.success
+        case "failure":
+          return theme.backgrounds.failure
+        default:
+          return theme.backgrounds.normal
+      }
+    }
+    }
 `;
 
 
-const Layout = ({children}) => {
+const Layout = ({children, backgroundColor}) => {
   return (
     <ThemeProvider theme={theme}>
         <React.Fragment>
             <GlobalStyle />
-            <StyledWrapper>
+            <StyledWrapper backgroundColor={backgroundColor}>
                 {children}
             </StyledWrapper>
         </React.Fragment>

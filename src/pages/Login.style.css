@@ -1,4 +1,4 @@
-.container-login{
+/* .container-login{
     display: flex;
     width: calc(100% - 30px);
     min-height: calc(100vh - 30px);
@@ -10,22 +10,22 @@
     justify-content: center;
     align-items: center;
     padding: 20px;
-}
+} */
 
-.login-form {
+/* .login-form {
     width: 100%;
     box-sizing: border-box;
-}
-.login-form h1{
+} */
+h1{
     text-align: center;
     margin-bottom: 40px;
     font-size: 35px;
 }
-.no-account{
+/* .no-account{
     margin-top: 50px;
     text-align: center;
     font-size: 15px;
-}
+} */
 /* .login-input{
     margin: 15px 0 0 0 !important;
 } */

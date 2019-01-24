@@ -3,7 +3,11 @@ import Button from '@material-ui/core/Button'
 import { Link } from 'react-router-dom';
 import './Login.style.css';
 import history from "../utils/history";
+
 import InputStyled from '../components/LoginRegisterInput'
+import Wrapper from '../components/LoginRegisterWrapper';
+import StyledForm from '../components/StyledForm';
+import StyledH3 from '../components/StyledH3'
 
 import { connect } from 'react-redux';
 import { registerUser } from '../actions'
@@ -20,7 +24,8 @@ class Login extends Component {
         email: "",
         nazwisko: "",
         imie: "",
-        klasa: ""
+        klasa: "",
+        bgStyle: "normal",
 
     }
     componentWillMount(){
@@ -63,7 +68,7 @@ class Login extends Component {
         }
     }
     procceedRegister = () => {
-        this.props.registerUser(this.state);
+        this.props.registerUser(this.state, this.listenToBackground);
     }
     checkKey = (e) => {
         e.keyCode === 13 && this.procceedRegister();
@@ -78,11 +83,15 @@ class Login extends Component {
             return this.props.messages.success.register ? <p className="success">{this.props.messages.success.register}</p> : ''
         }
     }
+    listenToBackground = (type) => {
+        if(type === "success") this.setState((prev) => ({...prev, bgStyle: type}))
+        else if(type === "failure") this.setState((prev) => ({...prev, bgStyle: type}))
+    }
     render() {
         return (
-            <Layout>
-            <div className="container-login">
-                <form className="login-form">
+            <Layout backgroundColor={this.state.bgStyle}>
+            <Wrapper>
+                <StyledForm setWidth="100%">
                     <h1>Załóż konto na szkolnej platformie</h1>
                     <InputStyled onChange={(e) => this.handleInput(e)} name="login" value={this.state.login} type="text" label="Login"/>
                     <InputStyled onChange={(e) => this.handleInput(e)} name="email" value={this.state.email} type="text" label="E-mail"/>
@@ -95,11 +104,11 @@ class Login extends Component {
 
                     <Button onClick={this.procceedRegister} size="large" variant="contained" color="primary" fullWidth={true} style=
                     {this.loginInputStyle}>Zarejstruj się</Button>
-                </form>
+                </StyledForm>
                 { this.printErrors() }
                 { this.printSuccess() }
-                <Link to="/login"><h3 className="no-account">Posiadasz już konto? Zaloguj się!</h3></Link>
-            </div>
+                <Link to="/login"><StyledH3 align="center" margin="50px 0 0 0">Posiadasz już konto? Zaloguj się!</StyledH3></Link>
+            </Wrapper>
             </Layout>
         )
     }
