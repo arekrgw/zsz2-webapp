@@ -11,7 +11,7 @@ const StyledDiv = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 20px;
+    padding: 50px 20px;
 `
 
 export default ({children}) => {

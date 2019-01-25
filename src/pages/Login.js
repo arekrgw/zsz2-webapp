@@ -66,7 +66,7 @@ class Login extends Component {
             <Layout backgroundColor={this.state.bgStyle}>
             <Wrapper>
                 <StyledForm setWidth="100%">
-                    <StyledH1 align="center" fontSize="35px" margin="30px 0 50px 0" shadow>Zaloguj się do platformy</StyledH1>
+                    <StyledH1 align="center" margin="30px 0 50px 0" shadow>Zaloguj się do platformy</StyledH1>
                     <InputStyled onChange={(e) => this.handleInput(e)} name="login" value={this.state.login} type="text" label="Login" />
                     <InputStyled onChange={(e) => this.handleInput(e)} name="password" value={this.state.password} type="password" label="Hasło"/>
                     <Button onClick={this.procceedLogin} size="large" variant="contained" color="primary" fullWidth={true} style=
