@@ -1,5 +1,5 @@
 import Cookie from 'js-cookie';
-import history from '../utils/history';
+
 
 
 export default (state = null, action) => {
@@ -8,7 +8,6 @@ export default (state = null, action) => {
         case "HASH_ASSIGN":
             const { payload } = action;
             Cookie.set("hash", payload.hash);
-            history.push("/");
             return state
 
         case "LOG_OUT":

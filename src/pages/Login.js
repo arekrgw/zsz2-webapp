@@ -34,6 +34,9 @@ class Login extends Component {
         //Clear messages
         this.props.clearLoginMessages();
     }
+    navigateToHome = () => {
+        history.push("/")
+    }
     handleInput = (e) => {
         switch(e.target.name){
             case "login":
@@ -47,7 +50,7 @@ class Login extends Component {
         }
     }
     procceedLogin = () => {
-        this.props.logInUser(this.state.login, this.state.password, this.listenToBackground);
+        this.props.logInUser(this.state.login, this.state.password, this.listenToBackground, this.navigateToHome);
     }
     checkKey = (e) => {
         e.keyCode === 13 && this.procceedLogin();

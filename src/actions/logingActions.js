@@ -1,10 +1,10 @@
 import axios from 'axios'
 import { getDeviceIdentity, deviceHash } from '../utils/utilities';
 
-const URL = "http://localhost/zsz2/";
+const URL = "http://localhost/zsz2-webapp-api/";
 
 
-export const logInUser = (login, password, bgChange) => {
+export const logInUser = (login, password, bgChange, nav) => {
     const FULL_URL = URL+`login.php`;
     const createForm = new FormData();
     const device = getDeviceIdentity();
@@ -27,6 +27,7 @@ export const logInUser = (login, password, bgChange) => {
             else{
                 dispatch({type: "HASH_ASSIGN", payload: res.data});
                 dispatch({ type: "CLEAR_LOGIN_ERRORS"});
+                nav();
             }
         })
         .catch(err => {
