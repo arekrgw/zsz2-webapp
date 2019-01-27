@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
-import Button from '@material-ui/core/Button'
 import { Link } from 'react-router-dom';
-import './Login.style.css';
 import history from "../utils/history";
 
 import InputStyled from '../components/LoginRegisterInput'
@@ -9,6 +7,8 @@ import Wrapper from '../components/LoginRegisterWrapper';
 import StyledForm from '../components/StyledForm';
 import StyledH3 from '../components/StyledH3'
 import StyledH1 from '../components/StyledH1'
+import StyledP from '../components/StyledP'
+import StyledButton from '../components/StyledButton'
 
 import { connect } from 'react-redux';
 import { registerUser } from '../actions/logingActions'
@@ -41,36 +41,11 @@ class Login extends Component {
         this.props.clearRegisterMessages();
     }
     handleInput = (e) => {
-        switch(e.target.name){
-            case "login":
-                this.setState({...this.state, login: e.target.value})
-                break;
-            case "password":
-                this.setState({...this.state, password: e.target.value})
-                break;
-            case "email":
-                this.setState({...this.state, email: e.target.value})
-                break;
-            case "imie":
-                this.setState({...this.state, imie: e.target.value})
-                break;
-            case "nazwisko":
-                this.setState({...this.state, nazwisko: e.target.value})
-                break;
-            case "klasa":
-                this.setState({...this.state, klasa: e.target.value})
-                break;
-            case "passwordS":
-                this.setState({...this.state, Spassword: e.target.value})
-                break;
-            case "code":
-                this.setState({...this.state, code: e.target.value})
-                break;
-            default:
-                break;
-        }
+        const {name, value} = e.target;
+        this.setState((prev) => ({...prev, [name]:value}));
     }
-    procceedRegister = () => {
+    procceedRegister = (e) => {
+        e.preventDefault();
         this.props.registerUser(this.state, this.listenToBackground);
     }
     checkKey = (e) => {
@@ -78,12 +53,12 @@ class Login extends Component {
     }
     printErrors = () => {
         if(this.props.messages.errors){
-            return this.props.messages.errors.register ? <p className="errors">{this.props.messages.errors.register}</p> : ''
+            return this.props.messages.errors.register ? <StyledP error>{this.props.messages.errors.register}</StyledP> : ''
         }
     }
     printSuccess = () => {
         if(this.props.messages.success){
-            return this.props.messages.success.register ? <p className="success">{this.props.messages.success.register}</p> : ''
+            return this.props.messages.success.register ? <StyledP success>{this.props.messages.success.register}</StyledP> : ''
         }
     }
     listenToBackground = (type) => {
@@ -102,11 +77,10 @@ class Login extends Component {
                     <InputStyled onChange={(e) => this.handleInput(e)} name="nazwisko" value={this.state.nazwisko} type="text" label="Nazwisko"/>
                     <InputStyled onChange={(e) => this.handleInput(e)} name="klasa" value={this.state.klasa} type="text" label="Lata dołączenia do szkoły"/>
                     <InputStyled onChange={(e) => this.handleInput(e)} name="password" value={this.state.password} type="password" label="Hasło"/>
-                    <InputStyled onChange={(e) => this.handleInput(e)} name="passwordS" value={this.state.Spassword} type="password" label="Powtórz hasło"/>
+                    <InputStyled onChange={(e) => this.handleInput(e)} name="Spassword" value={this.state.Spassword} type="password" label="Powtórz hasło"/>
                     <InputStyled onChange={(e) => this.handleInput(e)} name="code" value={this.state.code} type="text" label="Kod rejestracyjny szkoły"/>
 
-                    <Button onClick={this.procceedRegister} size="large" variant="contained" color="primary" fullWidth={true} style=
-                    {this.loginInputStyle}>Zarejstruj się</Button>
+                    <StyledButton onClick={this.procceedRegister} fullWidth>Zarejestruj się</StyledButton>
                 </StyledForm>
                 { this.printErrors() }
                 { this.printSuccess() }

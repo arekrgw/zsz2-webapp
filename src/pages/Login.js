@@ -1,15 +1,15 @@
 import React, { Component } from 'react'
-import Button from '@material-ui/core/Button'
 import InputStyled from '../components/LoginRegisterInput'
 import { Link } from 'react-router-dom';
-import './Login.style.css';
 import history from "../utils/history";
 
 import Layout from '../layout/Layout'
 import Wrapper from '../components/LoginRegisterWrapper';
 import StyledForm from '../components/StyledForm';
 import StyledH3 from '../components/StyledH3';
-import StyledH1 from '../components/StyledH1'
+import StyledH1 from '../components/StyledH1';
+import StyledP from '../components/StyledP';
+import StyledButton from '../components/StyledButton';
 
 import { connect } from 'react-redux';
 import { logInUser } from '../actions/logingActions'
@@ -38,18 +38,11 @@ class Login extends Component {
         history.push("/")
     }
     handleInput = (e) => {
-        switch(e.target.name){
-            case "login":
-                this.setState({...this.state, login: e.target.value})
-                break;
-            case "password":
-                this.setState({...this.state, password: e.target.value})
-                break;
-            default:
-                break;
-        }
+        const {name, value} = e.target;
+        this.setState((prev) => ({...prev, [name]:value}));
     }
-    procceedLogin = () => {
+    procceedLogin = (e) => {
+        e.preventDefault()
         this.props.logInUser(this.state.login, this.state.password, this.listenToBackground, this.navigateToHome);
     }
     checkKey = (e) => {
@@ -57,7 +50,7 @@ class Login extends Component {
     }
     printErrors = () => {
         if(this.props.messages.errors){
-            return this.props.messages.errors.login ? <p className="errors">{this.props.messages.errors.login}</p> : ''
+            return this.props.messages.errors.login ? <StyledP error>{this.props.messages.errors.login}</StyledP> : ''
         }
     }
     listenToBackground = (type) => {
@@ -72,8 +65,7 @@ class Login extends Component {
                     <StyledH1 align="center" margin="30px 0 50px 0" shadow>Zaloguj się do platformy</StyledH1>
                     <InputStyled onChange={(e) => this.handleInput(e)} name="login" value={this.state.login} type="text" label="Login" />
                     <InputStyled onChange={(e) => this.handleInput(e)} name="password" value={this.state.password} type="password" label="Hasło"/>
-                    <Button onClick={this.procceedLogin} size="large" variant="contained" color="primary" fullWidth={true} style=
-                    {this.loginInputStyle}>Zaloguj się</Button>
+                    <StyledButton onClick={this.procceedLogin} fullWidth>Zaloguj się</StyledButton>
                 </StyledForm>
                 { this.printErrors() }
                 <Link to="/register"><StyledH3 align="center" margin="50px 0 0 0">Nie posiadasz jeszcze konta? Załóż je!</StyledH3></Link>

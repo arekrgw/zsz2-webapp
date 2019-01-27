@@ -10,6 +10,7 @@ const GlobalStyle = createGlobalStyle`
       padding: 0;
       font-family: Montserrat;
       box-sizing: border-box;
+      outline: none;
     }
     a {
       color: inherit;

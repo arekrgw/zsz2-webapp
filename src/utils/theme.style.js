@@ -3,7 +3,7 @@ export default {
         black: `#111`,
         blue: `#303F9F`,
         lightblue: `#5587BC`,
-        light: `#F0E0BB`,
+        light: `#e5e5e5`,
         orange: `#F29F1D`,
         red: `#D8402B`,
         almostblack: `#333`,

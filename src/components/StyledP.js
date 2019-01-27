@@ -2,12 +2,12 @@
 import styled from 'styled-components'
 
 
-export default styled.h1`
-    font-size: 40px;
-    ${({fontSize}) => fontSize && `font-size: ${fontSize}`}
-    ${({shadow}) => shadow && `text-shadow: 0 10px 12px #00000055`}
+export default styled.p`
+    margin: 10px 0;
     ${({align}) => align && `text-align: ${align}`}
     color: ${({theme}) => theme.colors.black}
+    ${({error, theme}) => error && `color: ${theme.colors.error}`}
+    ${({success, theme}) => success && `color: ${theme.colors.success}`}
     ${({color}) => color && `color: ${color}`}
 
 `;
