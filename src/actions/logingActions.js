@@ -1,7 +1,9 @@
 import axios from 'axios'
 import { getDeviceIdentity, deviceHash } from '../utils/utilities';
+import Cookie from 'js-cookie';
 
-const URL = "http://localhost/zsz2-webapp-api/";
+// const URL = "http://localhost/zsz2-webapp-api/";
+const URL = "http://192.168.2.67/zsz2-webapp-api/";
 
 
 export const logInUser = (login, password, bgChange, nav) => {
@@ -88,26 +90,38 @@ export const registerUser = (user, bgChange) => {
 }
 
 
-export const noShortCookie = (uid, longCookie, shortCookie) =>{
+export const runAuth = (redirect) => {
     const FULL_URL = URL+`runAuth.php`;
-
+    console.log("dizal")
     const createForm = new FormData();
 
-    createForm.set("uid", uid);
-    createForm.set("longcookie", longCookie);
-    createForm.set("shortcookie", shortCookie);
-    return dispatch => {
-
-        axios.post(FULL_URL, createForm)
-        .then(res => {
-            console.log(res);
-            if(res.data.tokens === false || res.data.tokens === true){
-                dispatch({type: 'LOG_OUT'});
-                dispatch({type: 'AUTH_ERROR'});
-            }
-            else {
-                dispatch({type: 'TOKENS_ASSIGN', payload: res.data.tokens})
-            }
-        })
+    if(Cookie.get("hash")){
+        createForm.set("hash", Cookie.get("hash"));
+        createForm.set("fingerprint", Cookie.get("deviceHash"));
+    
+        return dispatch => {
+            axios.post(FULL_URL, createForm)
+            .then(res => {
+                if(res.data){
+                    if(res.data.hash){
+                        dispatch({type: "HASH_ASSIGN", payload: res.data})
+                    }   
+                    else dispatch({type: "USER_LOGGED"})
+                }
+                else {
+                    dispatch({type: "LOG_OUT"})
+                    redirect(); 
+                }
+                
+                
+                
+            })
+        }
     }
+    else {
+
+    }
+
+    
+
 }

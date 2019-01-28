@@ -8,12 +8,14 @@ export default (state = null, action) => {
         case "HASH_ASSIGN":
             const { payload } = action;
             Cookie.set("hash", payload.hash);
-            return state
+            return state = true;
 
         case "LOG_OUT":
             Cookie.remove("hash");
+            return state = false
 
-            return state
+        case "USER_LOGGED":
+            return state = true
             
         default:
             return state 
