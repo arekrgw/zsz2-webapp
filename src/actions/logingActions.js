@@ -92,7 +92,6 @@ export const registerUser = (user, bgChange) => {
 
 export const runAuth = (redirect) => {
     const FULL_URL = URL+`runAuth.php`;
-    console.log("dizal")
     const createForm = new FormData();
 
     if(Cookie.get("hash")){
@@ -115,6 +114,10 @@ export const runAuth = (redirect) => {
                 
                 
                 
+            })
+            .catch(err => {
+                dispatch({type: "LOG_OUT"});
+                redirect();
             })
         }
     }

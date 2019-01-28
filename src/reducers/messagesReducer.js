@@ -64,7 +64,6 @@ export default (state = null, action) => {
                 }
             }
         case "LOGIN_ERROR":
-            console.log("see");
             let LOGIN_ERROR = "Nieprawidłowe login lub hasło";
             return state = {
                 ...state,

@@ -4,7 +4,6 @@ import history from '../utils/history';
 import { Route } from 'react-router-dom';
 import {runAuth} from '../actions/logingActions'
 
-import Loader from '../components/LoadingPage'
 import Layout from '../layout/Layout'
 
 import Radio from './Radio';
@@ -28,9 +27,6 @@ class Home extends Component {
         else{
             return null
         }
-
-
-        
     }
     render() {
             return (
