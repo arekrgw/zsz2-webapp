@@ -17,7 +17,7 @@ import { bindActionCreators } from 'redux'
 import { isSignedInByCookies } from '../utils/utilities'
 import Layout from '../layout/Layout';
 
-class Login extends Component {
+class Register extends Component {
     state = {
         login: "",
         password: "",
@@ -28,10 +28,8 @@ class Login extends Component {
         imie: "",
         klasa: "",
         bgStyle: "normal",
+        isLogged: isSignedInByCookies() && history.push("/")
 
-    }
-    componentWillMount(){
-        isSignedInByCookies() && history.push("/");
     }
     componentDidMount(){
         document.addEventListener("keydown", this.checkKey);
@@ -49,7 +47,7 @@ class Login extends Component {
         this.props.registerUser(this.state, this.listenToBackground);
     }
     checkKey = (e) => {
-        e.keyCode === 13 && this.procceedRegister();
+        e.keyCode === 13 && this.procceedRegister(e);
     }
     printErrors = () => {
         if(this.props.messages.errors){
@@ -108,4 +106,4 @@ function mapStateToProps(state){
     )
   }
 
-export default connect(mapStateToProps, matchDispatchToProps)(Login);
+export default connect(mapStateToProps, matchDispatchToProps)(Register);

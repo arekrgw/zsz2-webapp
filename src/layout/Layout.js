@@ -41,15 +41,16 @@ const StyledWrapper = styled.div`
       }
     }
     }
+    ${({fullVh}) => fullVh && `height: 100vh`}
 `;
 
 
-const Layout = ({children, backgroundColor}) => {
+const Layout = ({children, backgroundColor, fullVh}) => {
   return (
     <ThemeProvider theme={theme}>
         <React.Fragment>
             <GlobalStyle />
-            <StyledWrapper backgroundColor={backgroundColor}>
+            <StyledWrapper backgroundColor={backgroundColor} fullVh={fullVh}>
                 {children}
             </StyledWrapper>
         </React.Fragment>
