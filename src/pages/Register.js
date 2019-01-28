@@ -82,7 +82,7 @@ class Register extends Component {
                 </StyledForm>
                 { this.printErrors() }
                 { this.printSuccess() }
-                <Link to="/login"><StyledH3 align="center" margin="50px 0 0 0">Posiadasz już konto? Zaloguj się!</StyledH3></Link>
+                <Link to="/login"><StyledH3 underline align="center" margin="50px 0 0 0">Posiadasz już konto? Zaloguj się!</StyledH3></Link>
             </Wrapper>
             </Layout>
         )

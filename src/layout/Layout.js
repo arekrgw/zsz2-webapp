@@ -3,14 +3,15 @@ import styled, { createGlobalStyle, ThemeProvider } from 'styled-components'
 import theme from '../utils/theme.style';
 
 const GlobalStyle = createGlobalStyle`
-    @import url('https://fonts.googleapis.com/css?family=Montserrat');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:200,300,400,600,800&subset=latin-ext');;
 
     *, *::before, *::after{
       margin: 0;
       padding: 0;
-      font-family: Montserrat;
+      font-family: 'Montserrat', sans-serif;
       box-sizing: border-box;
       outline: none;
+      font-weight: 400;
     }
     a {
       color: inherit;

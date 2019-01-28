@@ -5,36 +5,45 @@ import { Route } from 'react-router-dom';
 import {runAuth} from '../actions/logingActions'
 
 import Layout from '../layout/Layout'
+import Loader from '../components/LoadingPage'
+import BottomNavigation from '../components/BottomNavigation'
 
 import Radio from './Radio';
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux';
 
 class Home extends Component {
-    state = {
-        isLogged: false
-    }
-    static getDerivedStateFromProps(props){
+    componentDidMount(){
+
         const redirect = () => {
             history.push("/login")
         }
-        if(isSignedInByCookies() ){
-            props.runAuth(redirect);
-            return {
-                isLogged: props.isLogged
-            }
+
+        if(isSignedInByCookies()){
+            this.props.runAuth(redirect);
         }
         else{
-            return null
+            redirect();
         }
     }
     render() {
+        if(this.props.isLogged){
             return (
                 <Layout>
                     Home
                     <Route path="/radio" component={Radio} />
+                    <BottomNavigation />
                 </Layout>
             )
+        }
+        else{
+            return (
+                <Layout fullVh>
+                    <Loader pageLabel="Wczytywanie..."/>
+                </Layout>    
+            )
+        }
+            
     }
 }
 

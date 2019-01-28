@@ -6,4 +6,5 @@ export default styled.h3`
     ${({align}) => align && `text-align: ${align}`}
     margin: 15px 0;
     ${({fontSize}) => fontSize && `font-size: ${fontSize}`}
+    ${({underline}) => underline && `text-decoration: underline`}
 `;

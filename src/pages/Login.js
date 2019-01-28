@@ -65,7 +65,7 @@ class Login extends Component {
                         <StyledButton onClick={this.procceedLogin} fullWidth>Zaloguj się</StyledButton>
                     </StyledForm>
                     { this.printErrors() }
-                    <Link to="/register"><StyledH3 align="center" margin="50px 0 0 0">Nie posiadasz jeszcze konta? Załóż je!</StyledH3></Link>
+                    <Link to="/register"><StyledH3 align="center" underline margin="50px 0 0 0">Nie posiadasz jeszcze konta? Załóż je!</StyledH3></Link>
                 </Wrapper>
                 </Layout>
             )

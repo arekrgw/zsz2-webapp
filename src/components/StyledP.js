@@ -9,5 +9,6 @@ export default styled.p`
     ${({error, theme}) => error && `color: ${theme.colors.error}`}
     ${({success, theme}) => success && `color: ${theme.colors.success}`}
     ${({color}) => color && `color: ${color}`}
+    
 
 `;

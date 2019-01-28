@@ -9,5 +9,6 @@ export default styled.h1`
     ${({align}) => align && `text-align: ${align}`}
     color: ${({theme}) => theme.colors.black}
     ${({color}) => color && `color: ${color}`}
+    font-weight: 600;
 
 `;
