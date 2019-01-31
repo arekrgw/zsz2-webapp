@@ -3,19 +3,26 @@ import React, { Component } from 'react'
 import {faMusic, faShoppingBasket, faUser} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
+import { NavLink } from 'react-router-dom'
+
+
+
 const StyledNavContainer = styled.nav`
+    -webkit-tap-highlight-color:transparent;
     display: flex;
     justify-content: space-around;
     width: 100%;
     height: 80px;
-    background: ${({theme}) => theme.colors.darkblue}
+    background: ${({theme}) => theme.backgrounds.navBackground}
     position: fixed;
     bottom: 0;
     left: 0;
+    border-top: 3px solid ${({theme}) => theme.colors.black} 
+    overflow: hidden
+    color: #badeff
 `;
 
 const NavItem = styled.div`
-    color: white;
     font-size: 22px;
     display: flex;
     justify-content: center;
@@ -24,7 +31,9 @@ const NavItem = styled.div`
     cursor: pointer;
     position: relative;
     
-
+    &:hover {
+        color: white;
+    }
     &:hover::after {
         opacity: 0.2
     }
@@ -37,8 +46,8 @@ const NavItem = styled.div`
         content: '';
         display: block;
         position: absolute;
-        width: 75px;
-        height: 75px;
+        width: 85px;
+        height: 100px;
         background: ${({theme}) => theme.colors.lightblue}
         opacity: 0;
         border-radius: 50%;
@@ -49,8 +58,8 @@ const NavItem = styled.div`
         content: '';
         display: block;
         position: absolute;
-        width: 90px;
-        height: 75px;
+        width: 100px;
+        height: 90px;
         background: ${({theme}) => theme.colors.lightblue}
         opacity: 0;
         border-radius: 50%;
@@ -62,24 +71,35 @@ const NavItem = styled.div`
 
 const StyledP = styled.p`
     font-weight: 200;
-    color: white;
     font-size: 18px;
     text-align center
 
 `;
+
+const StyledLink = styled(NavLink)`
+    text-decoration: none;
+    color: inherit
+    &.active {
+        color: white;
+    }
+    &.active::after, &.active::before {
+        opacity: 0.2
+    }
+`
+
 export default class Navigation extends Component {
   render() {
     return (
       <StyledNavContainer>
-          <NavItem>
+          <NavItem as={StyledLink} to="/radio">
             <FontAwesomeIcon icon={faMusic} />
             <StyledP>Radio</StyledP>
           </NavItem>
-          <NavItem>
+          <NavItem as={StyledLink} to="/sklep">
             <FontAwesomeIcon icon={faShoppingBasket} />
             <StyledP>Sklep</StyledP>
           </NavItem>
-          <NavItem>
+          <NavItem as={StyledLink} to="/account">
             <FontAwesomeIcon icon={faUser} />
             <StyledP>Konto</StyledP>
           </NavItem>

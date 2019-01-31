@@ -6,6 +6,7 @@ export default (state = null, action) => {
 
     switch(action.type){
         case "HASH_ASSIGN":
+            console.log(action.payload)
             const { payload } = action;
             Cookie.set("hash", payload.hash);
             return state = true;

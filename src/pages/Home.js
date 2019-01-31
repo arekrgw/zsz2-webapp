@@ -30,7 +30,6 @@ class Home extends Component {
         if(this.props.isLogged){
             return (
                 <Layout>
-                    Home
                     <Route path="/radio" component={Radio} />
                     <BottomNavigation />
                 </Layout>
@@ -38,9 +37,9 @@ class Home extends Component {
         }
         else{
             return (
-                <Layout fullVh>
+                
                     <Loader pageLabel="Wczytywanie..."/>
-                </Layout>    
+                   
             )
         }
             

@@ -4,9 +4,9 @@ import styled from 'styled-components';
 
 
 const Loader = styled.div`
-  width: 200px;
-  height: 200px;
-  border: 10px solid ${({theme}) => theme.colors.light}
+  width: 150px;
+  height: 150px;
+  border: 10px solid white
   border-left: 10px solid transparent
   border-right: 10px solid transparent
   border-radius: 50%;
@@ -25,14 +25,14 @@ const Loader = styled.div`
 const StyledPageTag = styled.p`
   font-size: 24px
   font-weight: 300;
-  color: ${({theme}) => theme.colors.light}
+  color: white
   margin: 50px 0;
   
 `
 
 const StyledDiv = styled.div`
   width: 100%;
-  height: 100%;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;

@@ -2,12 +2,13 @@ import { combineReducers } from 'redux';
 
 import loginReducer from './loginReducer';
 import messages from './messagesReducer';
-
+import songs from './songsReducer'
 
 
 const allReducers = combineReducers({
     loginReducer,
-    messages
+    messages,
+    songs
 });
 
 export default allReducers;

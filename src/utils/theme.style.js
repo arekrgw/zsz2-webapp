@@ -37,6 +37,16 @@ export default {
                 background: -webkit-linear-gradient(top, #a90329 0%,#6d0019 100%);
                 background: linear-gradient(to bottom, #a90329 0%,#6d0019 100%);
                 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a90329', endColorstr='#6d0019',GradientType=0 );
+        `,
+        navBackground: `
+                background: rgba(41,78,138,1);
+                background: -moz-linear-gradient(top, rgba(41,78,138,1) 0%, rgba(18,45,89,1) 100%);
+                background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(41,78,138,1)), color-stop(100%, rgba(18,45,89,1)));
+                background: -webkit-linear-gradient(top, rgba(41,78,138,1) 0%, rgba(18,45,89,1) 100%);
+                background: -o-linear-gradient(top, rgba(41,78,138,1) 0%, rgba(18,45,89,1) 100%);
+                background: -ms-linear-gradient(top, rgba(41,78,138,1) 0%, rgba(18,45,89,1) 100%);
+                background: linear-gradient(to bottom, rgba(41,78,138,1) 0%, rgba(18,45,89,1) 100%);
+                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#294e8a', endColorstr='#122d59', GradientType=0 );
         `
     }
 }
