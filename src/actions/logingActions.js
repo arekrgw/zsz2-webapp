@@ -97,7 +97,6 @@ export const runAuth = (redirect) => {
     if(Cookie.get("hash")){
         createForm.set("hash", Cookie.get("hash"));
         createForm.set("fingerprint", Cookie.get("deviceHash"));
-        console.log("AUTH")
         return dispatch => {
             axios.post(FULL_URL, createForm)
             .then(res => {

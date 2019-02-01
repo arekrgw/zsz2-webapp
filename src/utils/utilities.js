@@ -36,7 +36,7 @@ export const deviceHash = () => {
         for (var i = 0; i < 20; i++){
             deviceHash += chars.charAt(Math.floor(Math.random() * chars.length));
         }
-        Cookie.set("deviceHash", deviceHash);
+        Cookie.set("deviceHash", deviceHash, {expires: new Date(2038, 12, 31)});
         return deviceHash;
     }
     else return Cookie.get("deviceHash");

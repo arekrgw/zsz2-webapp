@@ -27,7 +27,7 @@ class Radio extends Component {
   render() {
     return (
       <div>
-        <Loader pageLabel="Wczytywanie piosenek..."/>
+        <Loader isLayout pageLabel="Wczytywanie piosenek..."/>
       </div>
     )
   }

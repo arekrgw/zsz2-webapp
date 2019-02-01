@@ -32,7 +32,7 @@ const StyledPageTag = styled.p`
 
 const StyledDiv = styled.div`
   width: 100%;
-  height: 100vh;
+  ${({isLayout}) => isLayout ? `height: calc(100vh - 40px);` : `height: 100vh;`}
   display: flex;
   justify-content: center;
   align-items: center;
@@ -42,7 +42,7 @@ const StyledDiv = styled.div`
 
 export default (props) => {
   return (
-    <StyledDiv>
+    <StyledDiv isLayout={props.isLayout}>
       <Loader/>
       <StyledPageTag>{props.pageLabel}</StyledPageTag>
     </StyledDiv>

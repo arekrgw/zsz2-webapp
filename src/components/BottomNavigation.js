@@ -12,14 +12,15 @@ const StyledNavContainer = styled.nav`
     display: flex;
     justify-content: space-around;
     width: 100%;
-    height: 80px;
+    height: 50px;
     background: ${({theme}) => theme.backgrounds.navBackground}
     position: fixed;
     bottom: 0;
     left: 0;
-    border-top: 3px solid ${({theme}) => theme.colors.black} 
+    border-top: 1px solid ${({theme}) => theme.colors.black} 
     overflow: hidden
     color: #badeff
+    box-shadow: 0 -2px 8px 10px #00000011;
 `;
 
 const NavItem = styled.div`
@@ -70,9 +71,11 @@ const NavItem = styled.div`
 `;
 
 const StyledP = styled.p`
+    display: block;
     font-weight: 200;
-    font-size: 18px;
+    font-size: 12px;
     text-align center
+    
 
 `;
 
