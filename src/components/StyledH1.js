@@ -10,5 +10,6 @@ export default styled.h1`
     color: ${({theme}) => theme.colors.black}
     ${({color}) => color && `color: ${color}`}
     font-weight: 600;
+    ${({small}) => small && `font-size: 32px`}
 
 `;

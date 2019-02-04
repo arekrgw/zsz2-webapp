@@ -8,7 +8,10 @@ export const getSongs = (red, date = null) => {
     let FULL_URL = URL+`/radio/getSongs.php?devicehash=${Cookie.get("deviceHash")}&hash=${Cookie.get("hash")}`;
 
     if(date){
-        FULL_URL = FULL_URL+`&date=${date}`;
+        
+        let formatedDate = `${date.getFullYear()}-${date.getMonth()+1 < 9 ? "0"+(date.getMonth()+1) : date.getMonth()+1}-${date.getDate()}`;
+        console.log(formatedDate);
+        FULL_URL = FULL_URL+`&date=${formatedDate}`;
     }
 
     return dispatch => {
