@@ -15,7 +15,6 @@ const GlobalStyle = createGlobalStyle`
     }
     a {
       color: inherit;
-      text-decoration: none;
     }
 
     a:visited {
@@ -42,16 +41,17 @@ const StyledWrapper = styled.div`
       }
     }
     }
-    ${({fullVh}) => fullVh && `height: 100vh`}
+    ${({fullVh}) => fullVh && `min-height: 100vh`}
+    ${({bottomNavMargin}) => bottomNavMargin && `padding-bottom: 100px`}
 `;
 
 
-const Layout = ({children, backgroundColor, fullVh}) => {
+const Layout = ({children, backgroundColor, fullVh, bottomNavMargin}) => {
   return (
     <ThemeProvider theme={theme}>
         <React.Fragment>
             <GlobalStyle />
-            <StyledWrapper backgroundColor={backgroundColor} fullVh={fullVh}>
+            <StyledWrapper backgroundColor={backgroundColor} fullVh={fullVh} bottomNavMargin>
                 {children}
             </StyledWrapper>
         </React.Fragment>

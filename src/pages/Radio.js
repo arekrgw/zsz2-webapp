@@ -1,14 +1,13 @@
 import React, { Component } from 'react'
 import styled from 'styled-components';
 
-import RadioWrapper from '../components/RadioWrapper';
+import RadioElement from '../components/RadioElement';
 import StyledP from '../components/StyledP'
 import StyledH1 from '../components/StyledH1'
+import StyledH3 from '../components/StyledH3'
+import AutorTag from '../components/AutorTag'
+import SongComponent from '../components/SongComponent'
 
-import DayPickerInput from 'react-day-picker/DayPickerInput';
-import 'react-day-picker/lib/style.css';
-
-import '../utils/datepicker.style.css'
 
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux';
@@ -18,7 +17,19 @@ import history from '../utils/history';
 import Loader from '../components/LoadingPage'
 import { isSignedInByCookies } from '../utils/utilities';
 
+import DatePicker from 'react-date-picker';
 
+
+const StyledPicker = styled(DatePicker)`
+  
+  width: 100%;
+  margin: 0 auto
+  > .react-date-picker__wrapper{
+    border: none
+    margin: 0 auto
+    font-size: 26px 
+  }
+`
 class Radio extends Component {
   state = {
     date: new Date()
@@ -28,7 +39,6 @@ class Radio extends Component {
   }
   fetchSongs = (date = null) => {
     this.setState({date: new Date(date)});
-    console.log(date)
     this.props.getSongs(this.redirect, date);
   }
   componentDidMount(){
@@ -39,22 +49,48 @@ class Radio extends Component {
         this.redirect();
     }
   }
+  renderSongs = () => {
+    if(this.props.songs.length > 0){
+      return this.props.songs.map((song, key) => {
+        return (
+          <RadioElement key={key} transparent>
+            <StyledH3 bold align="center" bigger>Piosenka #{key+1}</StyledH3>
+            <SongComponent>{song.url ? (
+              <a href={song.url} target="_blank" rel="noopener noreferrer">{song.title ? song.title : song.url}</a>
+            ) : <StyledP>{song.title}</StyledP>}
+            </SongComponent>
+            <AutorTag>Autor: {song.autor}</AutorTag>
+          </RadioElement>
+        )
+      })
+    }
+    else {
+      return (
+        <RadioElement>
+          <StyledH3 align="center">Dziś jeszcze nic tu nie ma :/</StyledH3>
+        </RadioElement>
+      )
+    }
+  }
   render() {
       if(this.props.songs){
         return (
           <>
-            <RadioWrapper>
+            <RadioElement bigpadding>
               <StyledH1 small align="center">Radiowęzeł</StyledH1>
               <StyledP align="center">Teraz sam możesz zdecydować jaka muzyka gra w Twojej szkole</StyledP>
-            </RadioWrapper>
-            <RadioWrapper nopadding>
+            </RadioElement>
+            <RadioElement nopadding>
               <StyledP align="center" underline>Wybierz datę</StyledP>
-              <DayPickerInput 
-                onDayChange={this.fetchSongs}
+              <StyledPicker 
                 value={this.state.date}
-                format="dd-MM-YYYY"
+                showLeadingZeros
+                onChange={this.fetchSongs}
+                clearIcon={null}
               />
-            </RadioWrapper>
+              
+            </RadioElement>
+            {this.renderSongs()}
           </>
           
         )

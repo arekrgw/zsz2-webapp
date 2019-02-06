@@ -29,7 +29,7 @@ class Home extends Component {
     render() {
         if(this.props.isLogged){
             return (
-                <Layout>
+                <Layout fullVh bottomNavMargin>
                     <Route path="/radio" component={Radio} />
                     <BottomNavigation />
                 </Layout>

@@ -10,7 +10,6 @@ export const getSongs = (red, date = null) => {
     if(date){
         
         let formatedDate = `${date.getFullYear()}-${date.getMonth()+1 < 9 ? "0"+(date.getMonth()+1) : date.getMonth()+1}-${date.getDate()}`;
-        console.log(formatedDate);
         FULL_URL = FULL_URL+`&date=${formatedDate}`;
     }
 
@@ -20,6 +19,7 @@ export const getSongs = (red, date = null) => {
             
             if(res.data.hash){
                 dispatch({type: "SONGS_WITH_HASH", payload: res.data})
+           
             }
             else if(!res.data){
                 dispatch({type: "LOG_OUT"})
@@ -27,6 +27,7 @@ export const getSongs = (red, date = null) => {
             }
             else{
                 dispatch({type: "SONGS", payload: res.data});
+           
             }
             
         })
