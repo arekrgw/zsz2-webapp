@@ -2,7 +2,7 @@ import axios from 'axios'
 import Cookie from 'js-cookie'
 // const URL = "http://localhost/zsz2-webapp-api/";
 // const URL = "http://192.168.2.67/zsz2-webapp-api";
-const URL = "http://temp.5v.pl/api/";
+const URL = "//temp.5v.pl/api/";
 
 
 export const getSongs = (red, date = null) => {
