@@ -9,7 +9,7 @@ export default {
         red: `#D8402B`,
         almostblack: `#333`,
         error: `#FF0000`,
-        success: `#00FF00`
+        success: `#15af3c`
     },
     breakpoints: {
         small: `@media all and (min-width: 480px)`,

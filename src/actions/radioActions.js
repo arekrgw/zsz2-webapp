@@ -31,12 +31,38 @@ export const getSongs = (red, date = null) => {
             }
             
         })
-        .catch(err => {
-
-        }) 
     }
 
 
 
 
+}
+
+export const postSong = (url, title, annonymous, closeModal, fetchSongs) => {
+    let FULL_URL = URL+`/radio/postSong.php`;
+    let createForm = new FormData();
+
+    createForm.set("hash", Cookie.get("hash"));
+    createForm.set("devicehash", Cookie.get("deviceHash"));
+    createForm.set("url", url);
+    createForm.set("title", title);
+    createForm.set("annonymous", annonymous ? 1 : 0);
+    
+    return dispatch => {
+        axios.post(FULL_URL, createForm)
+        .then(res => {
+            if(res.data){
+                closeModal();
+                fetchSongs();
+                dispatch({type: "CLEAR_POST_SONG_ERRORS"})
+            }
+            else {
+                fetchSongs()
+                dispatch({type: "POST_SONG_ERROR"})
+            }
+        })
+        .catch(err => {
+            dispatch({type: "POST_SONG_CON_ERROR"})
+        })
+    }
 }

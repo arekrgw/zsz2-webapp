@@ -13,7 +13,7 @@ export default styled.div`
     ${({nopadding}) => nopadding && `padding: 0`}
     ${({bigpadding}) => bigpadding && `padding: 30px 10px`}
     transition: all 0.2s ease-in-out
-
+    word-break: break-all;
     ${({transparent, theme}) => transparent && ` &:hover {
         background: #FFFFFFDD;
         border: 2px solid ${theme.colors.darkblue} 

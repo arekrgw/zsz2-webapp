@@ -121,7 +121,8 @@ export const runAuth = (redirect) => {
         }
     }
     else {
-
+        redirect();
+        return {type: "LOG_OUT"}
     }
 
     

@@ -21,6 +21,7 @@ const StyledNavContainer = styled.nav`
     overflow: hidden
     color: #badeff
     box-shadow: 0 -2px 8px 10px #00000011;
+    z-index: 1111
 `;
 
 const NavItem = styled.div`

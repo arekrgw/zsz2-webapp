@@ -22,6 +22,15 @@ export default (state = null, action) => {
                     register: CLEAR_REGISTER_ERRORS
                 }
             }
+        case "CLEAR_POST_SONG_ERRORS":
+            let CLEAR_POST_SONG_ERRORS = state.errors.addSong && null; 
+            return state = {
+                ...state,
+                errors: {
+                    ...state.errors,
+                    addSong: CLEAR_POST_SONG_ERRORS
+                }
+            }
         case "CLEAR_REGISTER_MESSAGES" :
             let CLEAR_REGISTER_ERRORS_ALL = state.errors.register && null; 
             let CLEAR_REGISTER_SUCCESS_ALL = state.errors.register && null;
@@ -114,6 +123,7 @@ export default (state = null, action) => {
             return state = {
                 ...state,
                 errors: {
+                    ...state.errors,
                     register: REGISTER_CONNECTION_ERROR
                 }
             }
@@ -133,7 +143,30 @@ export default (state = null, action) => {
                     register: REGISTER_SUCCESS
                 }
             }
+            /// ADD SONG ERROR
+        case "POST_SONG_ERROR":
+            let POST_SONG_ERROR = "Upss... coś poszło nie tak"
+
+            return state = {
+                ...state,
+                errors: {
+                    ...state.errors,
+                    addSong: POST_SONG_ERROR
+                }
+            }
+        case "POST_SONG_CON_ERROR":
+            let POST_SONG_CON_ERROR = "Błąd połączenia"
+
+            return state = {
+                ...state,
+                errors: {
+                    ...state.errors,
+                    addSong: POST_SONG_CON_ERROR
+                }
+            }
         default:
             return state 
+
+
     }
 }
