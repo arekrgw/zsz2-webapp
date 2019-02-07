@@ -2,6 +2,7 @@
   "name": "zsz2webapp",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://temp.5v.pl",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.13",
     "@fortawesome/free-solid-svg-icons": "^5.7.0",

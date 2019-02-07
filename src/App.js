@@ -22,7 +22,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
 class App extends Component {
   render() {
     return (
-          <Router history={history}>
+          <Router history={history} basename="/" >
             <Switch>
               <Route exact path="/register" component={Register} />
               <Route exact path="/login" component={Login} />
